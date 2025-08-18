@@ -16,7 +16,8 @@ ETL Practice Project
 - Loaded data into PostgreSQL using SQLAlchemy.
 
 # Incomplete
-- [ ] Data cleaning. Extra focus needed on cleaning `agency` and `supplier_name` columns. 
+- [ ] Data cleaning. Extra focus needed on cleaning `agency` and `supplier_name` columns.
+- [ ] Refactor ETL logic for extensibility and maintainability. Shared logic (fetch, clean, transform) should not be duplicated. Each dataset only defines its specific transformation rules.
 - [ ] Validation check for creation of database in PostgreSQL. If exist, don't need to recreate again.
 - [ ] Improve database design. Utilized a basic star schema. Can be normalized further or possibly use a snowflake schema.
 - [ ] Data quality testing with PyTest or Great Expectations
