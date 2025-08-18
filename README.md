@@ -84,4 +84,7 @@ plt.show()
 
 <img width="1097" height="481" alt="image" src="https://github.com/user-attachments/assets/f33bc0e1-df56-48f2-aa77-54375ce9f935" />
 
+# Setup Instructions
+- Create new `.env` file and add in your API key
+- Update PostgreSQL login details and port
 
