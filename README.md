@@ -17,10 +17,14 @@ Load
 - Loaded data into PostgreSQL using SQLAlchemy.
 
 Incomplete
-- [ ] Data cleaning. Extra focus needed on cleaning `agency` and `supplier_name` columns
+- [ ] Data cleaning. Extra focus needed on cleaning `agency` and `supplier_name` columns. 
 - [ ] Validation check for creation of database in PostgreSQL. If exist, don't need to recreate again.
-- [ ] Improve basic star schema. Can be normalized further. 
+- [ ] Improve basic star schema. Can be normalized further.
+- [ ] Data quality testing with PyTest or Great Expectations
+- [ ] Integration testing
 
 Future Enhancements
+- Load DataFrame to Microsoft Azure SQL Database
 - Train text classifier for procurement_description column
 - Use tool like Airflow for scheduling & orchestration
+- Data quality testing with PyTest or Great Expectations
