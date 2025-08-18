@@ -42,6 +42,7 @@ ETL Practice Project
 # Sample Queries
 
 `Total tenders in 2024`
+
 SELECT COUNT(*) 
 FROM fact_tender_supplier f
 JOIN dim_tender t ON f.tender_id = t.tender_id
@@ -79,6 +80,6 @@ plt.xticks(rotation=45, ha="right")
 plt.show()
 ```
 
-<img width="977" height="652" alt="image" src="https://github.com/user-attachments/assets/e3f3cca5-bac2-4f5c-b132-866c1e860489" />
+<img width="1097" height="481" alt="image" src="https://github.com/user-attachments/assets/f33bc0e1-df56-48f2-aa77-54375ce9f935" />
 
 
