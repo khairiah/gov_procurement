@@ -41,44 +41,47 @@ ETL Practice Project
 
 # Sample Queries
 
-`Total tenders in 2024`
+```
 SELECT COUNT(*) 
 FROM fact_tender_supplier f
 JOIN dim_tender t ON f.tender_id = t.tender_id
 WHERE t.year = 2024;
 
-`Top 5 suppliers by awarded amount`
+# Top 5 suppliers by awarded amount
 SELECT s.supplier_name, SUM(f.awarded_amt) AS total_awarded
 FROM fact_tender_supplier f
 JOIN dim_supplier s ON f.supplier_id = s.supplier_id
 GROUP BY s.supplier_name
 ORDER BY total_awarded DESC
 LIMIT 5;
+```
 
 # Sample Chart
-## Top 10 agencies by total amount procured spent
+
+## Top 10 Suppliers in 2024
 ```
 query = """
-SELECT a.agency, SUM(f.awarded_amt) AS total_awarded
+SELECT s.supplier_name, SUM(f.awarded_amt) AS total_awarded
 FROM fact_awards f
-JOIN dim_agency a ON f.agency_id = a.agency_id
+JOIN dim_supplier s ON f.supplier_id = s.supplier_id
 WHERE f.award_date BETWEEN '2024-01-01' AND '2024-12-31'
-GROUP BY a.agency
+GROUP BY s.supplier_name
 ORDER BY total_awarded DESC
 LIMIT 10;
 """
-df_agency_2024 = pd.read_sql(text(query), engine)
+df_suppliers_2024 = pd.read_sql(text(query), engine)
 
 # plot
-plt.figure(figsize=(12,6))
-plt.bar(df_agency_2024['agency'], df_agency_2024['total_awarded'])
-plt.title("Top 10 Agencies by Total Awards (2024)")
-plt.xlabel("Agency")
-plt.ylabel("Total Awarded ($)")
-plt.xticks(rotation=45, ha="right")
+df_suppliers_2024 = df_suppliers_2024.sort_values("total_awarded", ascending=True)  # small → large
+
+plt.figure(figsize=(10,6))
+plt.barh(df_suppliers_2024['supplier_name'], df_suppliers_2024['total_awarded'])
+plt.title("Top 10 Suppliers by Awarded Amount (2024)")
+plt.xlabel("Total Awarded ($ Billions)")
+plt.ylabel("Supplier")
 plt.show()
 ```
 
-<img width="977" height="652" alt="image" src="https://github.com/user-attachments/assets/e3f3cca5-bac2-4f5c-b132-866c1e860489" />
+<img width="1097" height="481" alt="image" src="https://github.com/user-attachments/assets/f33bc0e1-df56-48f2-aa77-54375ce9f935" />
 
 
