@@ -1,7 +1,7 @@
-ETL Practice Project
+Data Crawler Project
 
 # Extract
-- Download dataset via API
+- Utilized government procurement & ACRA dataset from data.gov.sg
 
 # Transform
 - Normalize text (e.g., agency names, supplier names).
@@ -10,29 +10,16 @@ ETL Practice Project
 - Derive new columns where useful.
 
 # Load
-- Designed a relational schema:
-- Dimension tables (e.g., agency, supplier, tender status).
-- Fact table (linking dimensions with metrics such as awarded amount).
+- Designed a star schema with fact and dimensions tables
 - Loaded data into PostgreSQL using SQLAlchemy.
-
-# Incomplete
-- [ ] Data cleaning. Extra focus needed on cleaning `agency` and `supplier_name` columns.
-- [ ] Refactor ETL logic for extensibility and maintainability. Shared logic (fetch, clean, transform) should not be duplicated. Each dataset only defines its specific transformation rules.
-- [ ] Validation check for creation of database in PostgreSQL. If exist, don't need to recreate again.
-- [ ] Improve database design. Utilized a basic star schema. Can be normalized further or possibly use a snowflake schema.
-- [ ] Data quality testing with PyTest or Great Expectations
-- [ ] Integration testing
 
 # Future Enhancements
 - Load DataFrame to Microsoft Azure SQL Database
 - Train text classifier for `procurement_description` column
-- Create a word cloud
-- Use tool like Airflow for scheduling & orchestration
+- Use tools like Airflow for scheduling & orchestration
 - Data quality testing with PyTest or Great Expectations
 
----
-
-# Basic database schema
+# Basic database schema (for procurement dataset only)
 
 - `dim_agency(agency_id, agency_name, agency_sub)`  
 - `dim_supplier(supplier_id, supplier_name)`  
@@ -88,4 +75,3 @@ plt.show()
 # Setup Instructions
 - Create new `.env` file and add in your API key
 - Update PostgreSQL login details and port
-
